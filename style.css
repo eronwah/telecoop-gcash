@@ -1,4 +1,100 @@
-/* --- IDAGDAG ITO SA PINAKABABA NG IYONG STYLE.CSS --- */
+/* style.css */
+
+body {
+    background-color: #121212; /* Black na background */
+    color: #ffffff; 
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh; /* Pinalitan ng min-height para hindi maputol kapag mahaba ang resulta */
+    margin: 0;
+    padding: 20px; 
+    box-sizing: border-box;
+}
+
+.portal-container {
+    background-color: #ffffff; /* White na login box */
+    color: #000000; /* Black na text */
+    padding: 30px 20px; /* In-adjust para mas akma sa mobile */
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3); /* Red na shadow effect */
+    width: 100%;
+    max-width: 400px;
+    border-top: 6px solid #e60000; /* Red na accent sa taas */
+    text-align: center;
+    box-sizing: border-box; 
+}
+
+/* Flexible at Mas Maliit na Logo para sa Mobile */
+.portal-logo {
+    width: 100%;
+    max-width: 150px; /* Pinaliit para hindi masyadong malaki sa cellphone */
+    height: auto;
+    display: block; /* Para siguradong nasa sarili niyang linya */
+    margin: 0 auto 20px auto; /* Pinapagitna ang logo */
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; 
+    font-size: 14px;
+    text-align: center; /* Iginigitna ang tinatype na account number */
+    letter-spacing: 2px; /* Nilalagyan ng onting espasyo ang mga numero para madaling basahin */
+}
+
+.input-group input::placeholder {
+    color: #888;
+    font-style: italic;
+    font-size: 12px; 
+    text-align: left;
+    letter-spacing: normal;
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #e60000; 
+}
+
+.search-btn {
+    background-color: #e60000; /* Red na button */
+    color: #ffffff; 
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+    background-color: #cc0000; /* Darker red */
+}
+
+/* Disabled button state kapag naglo-loading */
+.search-btn:disabled {
+    background-color: #999999;
+    cursor: not-allowed;
+}
+
+/* --- MGA RESULTA (ACCOUNT DETAILS) --- */
 
 .result-container {
     margin-top: 20px;
@@ -16,10 +112,10 @@
 }
 
 .account-details {
-    background-color: #f9f9f9; /* Light grey para umangat sa puting background */
+    background-color: #f9f9f9; 
     padding: 20px;
     border-radius: 8px;
-    border-left: 4px solid #e60000; /* Red accent */
+    border-left: 4px solid #e60000; 
     color: #333;
 }
 
@@ -45,7 +141,7 @@
 
 /* Bagong Back Button kapag gusto mag-search ulit */
 .back-btn {
-    background-color: #121212; /* Black na button */
+    background-color: #121212; 
     color: #ffffff;
     border: none;
     padding: 10px;
@@ -60,10 +156,4 @@
 
 .back-btn:hover {
     background-color: #333333;
-}
-
-/* Disabled button state kapag naglo-loading */
-.search-btn:disabled {
-    background-color: #999999;
-    cursor: not-allowed;
 }
