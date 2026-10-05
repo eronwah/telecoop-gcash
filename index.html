@@ -46,7 +46,6 @@
     </div>
 
     <script>
-        // Inilagay na rito ang iyong aktwal na Web App URL
         const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby-U2zizYszAFELKvLBBI74ltCdzeoP4_ztBCx9X2lzmoCs0yxUncjtgueEBb5jNotK_w/exec';
 
         document.getElementById('lookupForm').addEventListener('submit', function(e) {
@@ -58,14 +57,12 @@
             const errorMsg = document.getElementById('errorMessage');
             const accountDetails = document.getElementById('accountDetails');
             
-            // Loading State (Mobile Friendly UI indicator)
             btn.innerText = 'Naghahanap...';
             btn.disabled = true;
             resultContainer.style.display = 'none';
             errorMsg.style.display = 'none';
             accountDetails.style.display = 'none';
 
-            // Pagtawag sa Google Sheets API
             fetch(`${APPS_SCRIPT_URL}?accountNumber=${accNum}`)
                 .then(response => response.json())
                 .then(data => {
@@ -74,13 +71,11 @@
                     resultContainer.style.display = 'block';
 
                     if (data.status === 'success') {
-                        // Pagsama-samahin ang pangalan at aalisin ang extra spaces
                         let fullName = `${data.firstName} ${data.middleName} ${data.lastName} ${data.suffix}`.trim();
                         
-                        // I-display ang data
                         document.getElementById('resName').innerText = fullName;
                         document.getElementById('resLevel').innerText = data.membershipLevel;
-                        document.getElementById('resDueDate').innerText = data.dueDate; // Diretso nang ilalabas ang "AKINSE" o "ATRENTA"
+                        document.getElementById('resDueDate').innerText = data.dueDate; 
                         document.getElementById('resArea').innerText = data.area;
                         
                         accountDetails.style.display = 'block';
@@ -99,7 +94,6 @@
                 });
         });
 
-        // Function para bumalik sa search box
         function resetForm() {
             document.getElementById('lookupForm').style.display = 'block';
             document.getElementById('resultContainer').style.display = 'none';
