@@ -4,17 +4,14 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Login</title>
-    <!-- Dito nakakonekta ang CSS file -->
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
     <div class="portal-container">
-        <!-- Flexible logo mula sa assets folder -->
         <img src="assets/mainlogo.png" alt="Main Logo" class="portal-logo">
         
-        <!-- Gumamit tayo ng form tag para gumana ang validation -->
-        <form action="#" method="POST">
+        <form id="lookupForm">
             <div class="input-group">
                 <label for="account-number">Enter your Account Number</label>
                 <input 
@@ -30,9 +27,84 @@
                 >
             </div>
             
-            <button type="submit" class="search-btn">Search</button>
+            <button type="submit" class="search-btn" id="searchBtn">Search</button>
         </form>
+
+        <div id="resultContainer" class="result-container" style="display: none;">
+            <div id="errorMessage" class="error-text"></div>
+            
+            <div id="accountDetails" class="account-details" style="display: none;">
+                <h3>Account Details</h3>
+                <p><strong>Name:</strong> <span id="resName"></span></p>
+                <p><strong>Membership Level:</strong> <span id="resLevel"></span></p>
+                <p><strong>Due Date:</strong> <span id="resDueDate"></span></p>
+                <p><strong>Area:</strong> <span id="resArea"></span></p>
+                
+                <button class="back-btn" onclick="resetForm()">Back</button>
+            </div>
+        </div>
     </div>
 
+    <script>
+        // Inilagay na rito ang iyong aktwal na Web App URL
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby-U2zizYszAFELKvLBBI74ltCdzeoP4_ztBCx9X2lzmoCs0yxUncjtgueEBb5jNotK_w/exec';
+
+        document.getElementById('lookupForm').addEventListener('submit', function(e) {
+            e.preventDefault(); 
+            
+            const accNum = document.getElementById('account-number').value;
+            const btn = document.getElementById('searchBtn');
+            const resultContainer = document.getElementById('resultContainer');
+            const errorMsg = document.getElementById('errorMessage');
+            const accountDetails = document.getElementById('accountDetails');
+            
+            // Loading State (Mobile Friendly UI indicator)
+            btn.innerText = 'Naghahanap...';
+            btn.disabled = true;
+            resultContainer.style.display = 'none';
+            errorMsg.style.display = 'none';
+            accountDetails.style.display = 'none';
+
+            // Pagtawag sa Google Sheets API
+            fetch(`${APPS_SCRIPT_URL}?accountNumber=${accNum}`)
+                .then(response => response.json())
+                .then(data => {
+                    btn.innerText = 'Search';
+                    btn.disabled = false;
+                    resultContainer.style.display = 'block';
+
+                    if (data.status === 'success') {
+                        // Pagsama-samahin ang pangalan at aalisin ang extra spaces
+                        let fullName = `${data.firstName} ${data.middleName} ${data.lastName} ${data.suffix}`.trim();
+                        
+                        // I-display ang data
+                        document.getElementById('resName').innerText = fullName;
+                        document.getElementById('resLevel').innerText = data.membershipLevel;
+                        document.getElementById('resDueDate').innerText = data.dueDate; // Diretso nang ilalabas ang "AKINSE" o "ATRENTA"
+                        document.getElementById('resArea').innerText = data.area;
+                        
+                        accountDetails.style.display = 'block';
+                        document.getElementById('lookupForm').style.display = 'none'; 
+                    } else {
+                        errorMsg.innerText = data.message;
+                        errorMsg.style.display = 'block';
+                    }
+                })
+                .catch(error => {
+                    btn.innerText = 'Search';
+                    btn.disabled = false;
+                    resultContainer.style.display = 'block';
+                    errorMsg.innerText = 'May problema sa koneksyon. Subukan muli.';
+                    errorMsg.style.display = 'block';
+                });
+        });
+
+        // Function para bumalik sa search box
+        function resetForm() {
+            document.getElementById('lookupForm').style.display = 'block';
+            document.getElementById('resultContainer').style.display = 'none';
+            document.getElementById('account-number').value = '';
+        }
+    </script>
 </body>
 </html>
