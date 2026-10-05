@@ -13,12 +13,25 @@
         <!-- Flexible logo mula sa assets folder -->
         <img src="assets/mainlogo.png" alt="Main Logo" class="portal-logo">
         
-        <div class="input-group">
-            <label for="account-number">Enter your Account Number</label>
-            <input type="text" id="account-number" placeholder="makikita sa ibabaw ng modem ang inyong account number">
-        </div>
-        
-        <button class="search-btn">Search</button>
+        <!-- Gumamit tayo ng form tag para gumana ang validation -->
+        <form action="#" method="POST">
+            <div class="input-group">
+                <label for="account-number">Enter your Account Number</label>
+                <input 
+                    type="text" 
+                    id="account-number" 
+                    placeholder="makikita sa ibabaw ng modem ang inyong account number"
+                    maxlength="7" 
+                    minlength="7" 
+                    pattern="\d{7}" 
+                    title="Mangyaring maglagay ng eksaktong 7 numero"
+                    oninput="this.value = this.value.replace(/[^0-9]/g, '')"
+                    required
+                >
+            </div>
+            
+            <button type="submit" class="search-btn">Search</button>
+        </form>
     </div>
 
 </body>
