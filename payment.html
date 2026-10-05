@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Payment Portal</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Gumagamit tayo ng ?v=3 para hindi mag-cache ang lumang CSS -->
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 
@@ -17,9 +18,17 @@
             <p class="upload-note">Once completed, kindly upload the screenshot of the receipt of your payment.</p>
             
             <input type="file" id="receiptUpload" class="upload-btn" accept="image/*">
+            
+            <!-- Back Button -->
+            <button class="back-link-btn" onclick="goToHome()">Back to Search</button>
         </div>
 
     </div>
 
+    <script>
+        function goToHome() {
+            window.location.href = 'index.html';
+        }
+    </script>
 </body>
 </html>

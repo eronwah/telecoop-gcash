@@ -56,7 +56,7 @@ body {
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    font-size: 16px; /* Pinalaki para mas malinaw sa web at hindi mag-auto zoom sa mobile */
+    font-size: 16px; 
     text-align: center; 
     letter-spacing: 2px; 
 }
@@ -72,7 +72,7 @@ body {
 .input-group input:focus {
     outline: none;
     border-color: #e60000; 
-    box-shadow: 0 0 5px rgba(230, 0, 0, 0.5); /* Accent highlight kapag tina-type-an */
+    box-shadow: 0 0 5px rgba(230, 0, 0, 0.5); 
 }
 
 .search-btn {
@@ -158,7 +158,7 @@ body {
 
 .button-group {
     display: flex;
-    flex-direction: row; /* Tiyak na magkatabi */
+    flex-direction: row; 
     gap: 10px; 
 }
 
@@ -227,17 +227,35 @@ body {
     cursor: pointer;
 }
 
+/* --- BACK BUTTON PARA SA PAYMENT PAGE --- */
+.back-link-btn {
+    background-color: transparent;
+    color: #888;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    margin-top: 15px;
+    font-size: 14px;
+    text-decoration: underline;
+    cursor: pointer;
+    transition: color 0.3s ease;
+}
+
+.back-link-btn:hover {
+    color: #e60000;
+}
+
 /* --- WEBVIEW / DESKTOP OPTIMIZATION --- */
 @media (min-width: 768px) {
     .portal-container {
-        padding: 40px; /* Mas malaking espasyo sa loob ng kahon */
-        max-width: 450px; /* Medyo palalaparin natin ang form sa computer view */
+        padding: 40px; 
+        max-width: 450px; 
         border-radius: 12px;
-        box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4); /* Mas magandang anino sa web */
+        box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4); 
     }
 
     .portal-logo {
-        max-width: 170px; /* Mas babagay ang bahagyang mas malaking logo dito */
+        max-width: 170px; 
     }
 
     .input-group label {

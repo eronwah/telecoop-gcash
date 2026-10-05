@@ -4,7 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Login</title>
-    <link rel="stylesheet" href="style.css">
+    <!-- Gumagamit tayo ng ?v=3 para hindi mag-cache ang lumang CSS -->
+    <link rel="stylesheet" href="style.css?v=3">
 </head>
 <body>
 
@@ -69,7 +70,12 @@
             accountDetails.style.display = 'none';
 
             fetch(`${APPS_SCRIPT_URL}?accountNumber=${accNum}`)
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     btn.innerText = 'Search';
                     btn.disabled = false;
