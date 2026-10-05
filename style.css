@@ -1,153 +1,95 @@
-body {
-    background-color: #121212; 
-    color: #ffffff; 
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; 
-    margin: 0;
-    padding: 20px; 
-    box-sizing: border-box;
-}
+/* --- BAGONG STYLES PARA SA PAYMENT SECTION & BUTTONS --- */
 
-.portal-container {
-    background-color: #ffffff; 
-    color: #000000; 
-    padding: 30px 20px; 
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3); 
-    width: 100%;
-    max-width: 400px;
-    border-top: 6px solid #e60000; 
+.payment-section {
+    margin-top: 20px;
+    padding-top: 15px;
+    border-top: 1px dashed #ccc;
     text-align: center;
-    box-sizing: border-box; 
 }
 
-.portal-logo {
-    width: 100%;
-    max-width: 150px; 
-    height: auto;
-    display: block; 
-    margin: 0 auto 20px auto; 
-}
-
-.input-group {
-    text-align: left;
-    margin-bottom: 20px;
-}
-
-.input-group label {
-    display: block;
+.payment-question {
     font-weight: bold;
-    margin-bottom: 8px;
-    font-size: 14px;
-    text-align: center; /* Iginigitna ang label na "Enter your Account Number" */
+    color: #e60000;
+    margin-bottom: 15px;
+    font-size: 15px;
 }
 
-.input-group input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    box-sizing: border-box; 
-    font-size: 14px;
-    text-align: center; 
-    letter-spacing: 2px; 
+.button-group {
+    display: flex;
+    gap: 10px; /* Espasyo sa pagitan ng Yes at No button */
 }
 
-.input-group input::placeholder {
-    color: #888;
-    font-style: italic;
-    font-size: 12px; 
-    text-align: center; /* Iginigitna na rin natin ang placeholder para pantay */
-    letter-spacing: normal;
-}
-
-.input-group input:focus {
-    outline: none;
-    border-color: #e60000; 
-}
-
-.search-btn {
+.yes-btn {
+    flex: 1;
     background-color: #e60000; 
-    color: #ffffff; 
+    color: #ffffff;
     border: none;
     padding: 12px;
-    width: 100%;
     border-radius: 4px;
-    font-size: 16px;
+    font-size: 14px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.search-btn:hover {
-    background-color: #cc0000; 
+.yes-btn:hover {
+    background-color: #cc0000;
 }
 
-.search-btn:disabled {
-    background-color: #999999;
-    cursor: not-allowed;
-}
-
-.result-container {
-    margin-top: 20px;
-    text-align: left;
-}
-
-.error-text {
-    color: #ff4c4c;
-    background-color: rgba(255, 76, 76, 0.1);
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #ff4c4c;
-    text-align: center;
-    font-size: 14px;
-}
-
-.account-details {
-    background-color: #f9f9f9; 
-    padding: 20px;
-    border-radius: 8px;
-    border-left: 4px solid #e60000; 
-    color: #333;
-}
-
-.account-details h3 {
-    margin-top: 0;
-    margin-bottom: 15px;
-    color: #000;
-    font-size: 18px;
-    text-align: center;
-    border-bottom: 1px solid #ddd;
-    padding-bottom: 10px;
-}
-
-.account-details p {
-    margin: 8px 0;
-    font-size: 14px;
-    line-height: 1.4;
-}
-
-.account-details p strong {
-    color: #121212;
-}
-
-.back-btn {
+.no-btn {
+    flex: 1;
     background-color: #121212; 
     color: #ffffff;
     border: none;
-    padding: 10px;
-    width: 100%;
+    padding: 12px;
     border-radius: 4px;
     font-size: 14px;
     font-weight: bold;
     cursor: pointer;
-    margin-top: 15px;
     transition: background-color 0.3s ease;
 }
 
-.back-btn:hover {
+.no-btn:hover {
     background-color: #333333;
 }
+
+/* --- STYLES PARA SA PAYMENT.HTML --- */
+
+.payment-instructions {
+    text-align: center;
+    color: #333;
+}
+
+.payment-instructions p {
+    font-size: 15px;
+    margin-bottom: 10px;
+}
+
+.gcash-number {
+    font-size: 20px;
+    font-weight: bold;
+    color: #e60000;
+    margin: 15px 0;
+    background-color: #f9f9f9;
+    padding: 15px;
+    border-radius: 8px;
+    border: 1px solid #ddd;
+}
+
+.upload-note {
+    font-style: italic;
+    color: #555;
+    margin-bottom: 20px;
+}
+
+.upload-btn {
+    width: 100%;
+    padding: 10px;
+    background-color: #f9f9f9;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    cursor: pointer;
+    box-sizing: border-box;
+}
+
+/* Tatanggalin na natin yung lumang .back-btn css kung hindi mo na gagamitin, pero pwede ring iwan lang just in case */

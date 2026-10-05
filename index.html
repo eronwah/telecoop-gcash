@@ -38,9 +38,15 @@
                 <p><strong>Name:</strong> <span id="resName"></span></p>
                 <p><strong>Membership Level:</strong> <span id="resLevel"></span></p>
                 <p><strong>Due Date:</strong> <span id="resDueDate"></span></p>
-                <p><strong>Area:</strong> <span id="resArea"></span></p>
+                <!-- Inalis na natin ang Area dito -->
                 
-                <button class="back-btn" onclick="resetForm()">Back</button>
+                <div class="payment-section">
+                    <p class="payment-question">Are you paying for this account?</p>
+                    <div class="button-group">
+                        <button class="yes-btn" onclick="goToPayment()">Yes</button>
+                        <button class="no-btn" onclick="resetForm()">No, Search again</button>
+                    </div>
+                </div>
             </div>
         </div>
     </div>
@@ -57,7 +63,6 @@
             const errorMsg = document.getElementById('errorMessage');
             const accountDetails = document.getElementById('accountDetails');
             
-            // Pinalitan na ito ng "Searching..."
             btn.innerText = 'Searching...';
             btn.disabled = true;
             resultContainer.style.display = 'none';
@@ -82,7 +87,7 @@
                         document.getElementById('resName').innerText = fullName;
                         document.getElementById('resLevel').innerText = data.membershipLevel;
                         document.getElementById('resDueDate').innerText = data.dueDate; 
-                        document.getElementById('resArea').innerText = data.area;
+                        // Tinanggal din sa script ang pagtawag sa resArea
                         
                         accountDetails.style.display = 'block';
                         document.getElementById('lookupForm').style.display = 'none'; 
@@ -104,6 +109,11 @@
             document.getElementById('lookupForm').style.display = 'block';
             document.getElementById('resultContainer').style.display = 'none';
             document.getElementById('account-number').value = '';
+        }
+
+        // Bagong function para pumunta sa payment page
+        function goToPayment() {
+            window.location.href = 'payment.html';
         }
     </script>
 </body>
