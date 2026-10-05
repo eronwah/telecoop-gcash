@@ -57,14 +57,20 @@
             const errorMsg = document.getElementById('errorMessage');
             const accountDetails = document.getElementById('accountDetails');
             
-            btn.innerText = 'Naghahanap...';
+            // Pinalitan na ito ng "Searching..."
+            btn.innerText = 'Searching...';
             btn.disabled = true;
             resultContainer.style.display = 'none';
             errorMsg.style.display = 'none';
             accountDetails.style.display = 'none';
 
             fetch(`${APPS_SCRIPT_URL}?accountNumber=${accNum}`)
-                .then(response => response.json())
+                .then(response => {
+                    if (!response.ok) {
+                        throw new Error('Network response was not ok');
+                    }
+                    return response.json();
+                })
                 .then(data => {
                     btn.innerText = 'Search';
                     btn.disabled = false;
