@@ -38,7 +38,6 @@
                 <p><strong>Name:</strong> <span id="resName"></span></p>
                 <p><strong>Membership Level:</strong> <span id="resLevel"></span></p>
                 <p><strong>Due Date:</strong> <span id="resDueDate"></span></p>
-                <!-- Inalis na natin ang Area dito -->
                 
                 <div class="payment-section">
                     <p class="payment-question">Are you paying for this account?</p>
@@ -70,12 +69,7 @@
             accountDetails.style.display = 'none';
 
             fetch(`${APPS_SCRIPT_URL}?accountNumber=${accNum}`)
-                .then(response => {
-                    if (!response.ok) {
-                        throw new Error('Network response was not ok');
-                    }
-                    return response.json();
-                })
+                .then(response => response.json())
                 .then(data => {
                     btn.innerText = 'Search';
                     btn.disabled = false;
@@ -87,7 +81,6 @@
                         document.getElementById('resName').innerText = fullName;
                         document.getElementById('resLevel').innerText = data.membershipLevel;
                         document.getElementById('resDueDate').innerText = data.dueDate; 
-                        // Tinanggal din sa script ang pagtawag sa resArea
                         
                         accountDetails.style.display = 'block';
                         document.getElementById('lookupForm').style.display = 'none'; 
@@ -111,7 +104,6 @@
             document.getElementById('account-number').value = '';
         }
 
-        // Bagong function para pumunta sa payment page
         function goToPayment() {
             window.location.href = 'payment.html';
         }
