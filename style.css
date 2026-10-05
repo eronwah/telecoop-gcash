@@ -9,6 +9,8 @@ body {
     align-items: center;
     height: 100vh;
     margin: 0;
+    padding: 20px; /* Para may espasyo sa gilid kapag sa mobile view */
+    box-sizing: border-box;
 }
 
 .portal-container {
@@ -21,19 +23,15 @@ body {
     max-width: 400px;
     border-top: 6px solid #e60000; /* Red na accent sa taas */
     text-align: center;
+    box-sizing: border-box; /* Para eksakto ang sukat pati padding sa mobile */
 }
 
-/* Bagong CSS para sa Logo */
+/* Flexible na Logo para sa Web at Mobile */
 .portal-logo {
-    max-width: 120px; /* Pwede mong palitan ang number na ito depende sa gusto mong laki ng logo */
+    width: 100%;
+    max-width: 220px; /* Hindi lalaki ng sobra sa computer, pero liliit sa mobile */
     height: auto;
-    margin-bottom: 15px; /* Espasyo sa pagitan ng logo at title */
-}
-
-.portal-container h2 {
-    margin-top: 0;
-    color: #e60000; /* Red na title */
-    margin-bottom: 25px;
+    margin-bottom: 25px; /* Espasyo sa pagitan ng logo at input field */
 }
 
 .input-group {
