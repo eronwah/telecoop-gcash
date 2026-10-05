@@ -13,7 +13,7 @@ body {
 
 .portal-container {
     background-color: #ffffff; /* White na login box */
-    color: #000000; /* Black na text para mabasa sa puting background */
+    color: #000000; /* Black na text */
     padding: 40px 30px;
     border-radius: 8px;
     box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3); /* Red na shadow effect */
@@ -21,6 +21,13 @@ body {
     max-width: 400px;
     border-top: 6px solid #e60000; /* Red na accent sa taas */
     text-align: center;
+}
+
+/* Bagong CSS para sa Logo */
+.portal-logo {
+    max-width: 120px; /* Pwede mong palitan ang number na ito depende sa gusto mong laki ng logo */
+    height: auto;
+    margin-bottom: 15px; /* Espasyo sa pagitan ng logo at title */
 }
 
 .portal-container h2 {
@@ -46,25 +53,24 @@ body {
     padding: 12px;
     border: 1px solid #ccc;
     border-radius: 4px;
-    box-sizing: border-box; /* Para eksakto ang sukat */
+    box-sizing: border-box; 
     font-size: 14px;
 }
 
-/* Styling para sa placeholder text */
 .input-group input::placeholder {
     color: #888;
     font-style: italic;
-    font-size: 12px; /* Pinaliit nang kaunti dahil mahaba ang text */
+    font-size: 12px; 
 }
 
 .input-group input:focus {
     outline: none;
-    border-color: #e60000; /* Magiging red ang border kapag kinlick */
+    border-color: #e60000; 
 }
 
 .search-btn {
     background-color: #e60000; /* Red na button */
-    color: #ffffff; /* White text sa button */
+    color: #ffffff; 
     border: none;
     padding: 12px;
     width: 100%;
@@ -76,5 +82,5 @@ body {
 }
 
 .search-btn:hover {
-    background-color: #cc0000; /* Darker red kapag itinapat ang mouse */
+    background-color: #cc0000; /* Darker red */
 }
