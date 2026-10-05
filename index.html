@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Portal Login</title>
-    <!-- Gumagamit tayo ng ?v=3 para hindi mag-cache ang lumang CSS -->
-    <link rel="stylesheet" href="style.css?v=3">
+    <!-- Gumagamit tayo ng ?v=4 para siguradong babasahin ang bagong CSS -->
+    <link rel="stylesheet" href="style.css?v=4">
 </head>
 <body>
 
@@ -36,9 +36,20 @@
             
             <div id="accountDetails" class="account-details" style="display: none;">
                 <h3>Account Details</h3>
-                <p><strong>Name:</strong> <span id="resName"></span></p>
-                <p><strong>Membership Level:</strong> <span id="resLevel"></span></p>
-                <p><strong>Due Date:</strong> <span id="resDueDate"></span></p>
+                
+                <!-- Bagong structure para sa maayos na alignment -->
+                <div class="detail-row">
+                    <span class="detail-label">Name</span>
+                    <span class="detail-value" id="resName"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Membership Level</span>
+                    <span class="detail-value" id="resLevel"></span>
+                </div>
+                <div class="detail-row">
+                    <span class="detail-label">Due Date</span>
+                    <span class="detail-value" id="resDueDate"></span>
+                </div>
                 
                 <div class="payment-section">
                     <p class="payment-question">Are you paying for this account?</p>
