@@ -1,0 +1,80 @@
+/* style.css */
+
+body {
+    background-color: #121212; /* Black na background */
+    color: #ffffff; 
+    font-family: Arial, sans-serif;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    margin: 0;
+}
+
+.portal-container {
+    background-color: #ffffff; /* White na login box */
+    color: #000000; /* Black na text para mabasa sa puting background */
+    padding: 40px 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3); /* Red na shadow effect */
+    width: 100%;
+    max-width: 400px;
+    border-top: 6px solid #e60000; /* Red na accent sa taas */
+    text-align: center;
+}
+
+.portal-container h2 {
+    margin-top: 0;
+    color: #e60000; /* Red na title */
+    margin-bottom: 25px;
+}
+
+.input-group {
+    text-align: left;
+    margin-bottom: 20px;
+}
+
+.input-group label {
+    display: block;
+    font-weight: bold;
+    margin-bottom: 8px;
+    font-size: 14px;
+}
+
+.input-group input {
+    width: 100%;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box; /* Para eksakto ang sukat */
+    font-size: 14px;
+}
+
+/* Styling para sa placeholder text */
+.input-group input::placeholder {
+    color: #888;
+    font-style: italic;
+    font-size: 12px; /* Pinaliit nang kaunti dahil mahaba ang text */
+}
+
+.input-group input:focus {
+    outline: none;
+    border-color: #e60000; /* Magiging red ang border kapag kinlick */
+}
+
+.search-btn {
+    background-color: #e60000; /* Red na button */
+    color: #ffffff; /* White text sa button */
+    border: none;
+    padding: 12px;
+    width: 100%;
+    border-radius: 4px;
+    font-size: 16px;
+    font-weight: bold;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+}
+
+.search-btn:hover {
+    background-color: #cc0000; /* Darker red kapag itinapat ang mouse */
+}
