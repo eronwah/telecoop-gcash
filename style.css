@@ -100,6 +100,7 @@ body {
 /* --- RESULTS & ACCOUNT DETAILS --- */
 .result-container {
     margin-top: 20px;
+    text-align: left;
 }
 
 .error-text {
@@ -156,7 +157,7 @@ body {
     text-align: right;
 }
 
-/* --- PAYMENT SECTION --- */
+/* --- IN-APP PAYMENT SECTION --- */
 .payment-section {
     margin-top: 25px;
     padding-top: 20px;
@@ -206,9 +207,13 @@ body {
     background-color: #333333;
 }
 
+/* --- PAYMENT.HTML SPECIFIC STYLES --- */
 .payment-instructions {
     text-align: center;
     color: #333;
+    /* Limitahan ang maximum lapad upang hindi masyadong mabanat sa desktop */
+    max-width: 320px; 
+    margin: 0 auto; /* Para gitna ito lagi */
 }
 
 .payment-instructions p {
@@ -217,14 +222,16 @@ body {
 }
 
 .gcash-number {
-    font-size: 20px;
+    font-size: 18px; /* Bahagyang mas maliit para hindi mukhang pilit */
     font-weight: bold;
     color: #e60000;
-    margin: 15px 0;
+    margin: 15px auto;
     background-color: #f9f9f9;
-    padding: 15px;
+    padding: 12px;
     border-radius: 8px;
     border: 1px solid #ddd;
+    /* Pinaliit ang kahon ng number */
+    max-width: 250px; 
 }
 
 .upload-note {
@@ -240,6 +247,7 @@ body {
     border: 1px solid #ccc;
     border-radius: 4px;
     cursor: pointer;
+    box-sizing: border-box; /* Mahigpit na sukat */
 }
 
 .back-link-btn {
@@ -276,7 +284,6 @@ body {
 
 .modal-content {
     background-color: #ffffff;
-    /* Ginamit ang absolute positioning para perpektong nakagitna sa mobile at web */
     position: absolute;
     top: 50%;
     left: 50%;
@@ -344,7 +351,6 @@ body {
 }
 
 /* --- WEBVIEW / DESKTOP OPTIMIZATION --- */
-/* Ang media query na ito ay nakalagay sa dulo para hindi ma-overwrite ang mobile styles */
 @media (min-width: 768px) {
     .portal-container {
         padding: 40px; 
