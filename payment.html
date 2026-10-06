@@ -79,7 +79,7 @@
                         statusMsg.style.backgroundColor = 'rgba(40, 167, 69, 0.1)';
                         statusMsg.style.borderColor = '#28a745';
                         statusMsg.innerText = 'Matagumpay na na-upload ang iyong resibo!';
-                        fileInput.value = '';
+                        fileInput.value = ''; // I-clear ang input kapag success
                     } else {
                         statusMsg.style.color = '#ff4c4c';
                         statusMsg.innerText = 'Error: ' + data.message;
