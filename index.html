@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Telecoop San Leonardo</title>
-    <!-- Gumagamit tayo ng ?v=5 para siguradong babasahin ang bagong CSS -->
-    <link rel="stylesheet" href="style.css?v=5">
+    <!-- Gumagamit tayo ng ?v=6 para siguradong hindi naka-cache ang lumang CSS -->
+    <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
 
@@ -62,10 +62,10 @@
     </div>
 
     <script>
-        // Bago mong Web App URL mula sa Google Apps Script
-        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxdc1LDeINmYD4DjT_aF9KsReDVYWHh_l48wdu7OVFnTgeQSkfaMbYSAcBC56HsNdtS4g/exec';
+        // Web App URL mula sa iyong nakaraang setup
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby-U2zizYszAFELKvLBBI74ltCdzeoP4_ztBCx9X2lzmoCs0yxUncjtgueEBb5jNotK_w/exec';
 
-        // Global variable para itago ang nahanap na data
+        // Global variable para ipasa sa payment.html
         let fetchedAccountData = null;
 
         document.getElementById('lookupForm').addEventListener('submit', function(e) {
@@ -102,7 +102,6 @@
                         document.getElementById('resLevel').innerText = data.membershipLevel;
                         document.getElementById('resDueDate').innerText = data.dueDate; 
                         
-                        // I-save ang nahanap na data para ipasa sa payment page
                         fetchedAccountData = {
                             accountNumber: accNum,
                             accountName: fullName

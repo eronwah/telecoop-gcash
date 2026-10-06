@@ -4,8 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Telecoop San Leonardo</title>
-    <!-- Gumagamit tayo ng ?v=5 para siguradong babasahin ang bagong CSS -->
-    <link rel="stylesheet" href="style.css?v=5">
+    <link rel="stylesheet" href="style.css?v=6">
 </head>
 <body>
 
@@ -19,13 +18,10 @@
             
             <input type="file" id="receiptUpload" class="upload-btn" accept="image/*">
             
-            <!-- Upload Button -->
             <button class="search-btn" id="uploadBtn" style="margin-top: 15px;" onclick="uploadReceipt()">Upload Receipt</button>
             
-            <!-- Message Status -->
             <div id="statusMsg" class="error-text" style="display: none; margin-top: 15px;"></div>
 
-            <!-- Back Button -->
             <button class="back-link-btn" onclick="goToHome()">Back to Search</button>
         </div>
 
@@ -79,7 +75,7 @@
                         statusMsg.style.backgroundColor = 'rgba(40, 167, 69, 0.1)';
                         statusMsg.style.borderColor = '#28a745';
                         statusMsg.innerText = 'Matagumpay na na-upload ang iyong resibo!';
-                        fileInput.value = ''; // I-clear ang input kapag success
+                        fileInput.value = ''; 
                     } else {
                         statusMsg.style.color = '#ff4c4c';
                         statusMsg.innerText = 'Error: ' + data.message;
