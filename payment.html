@@ -4,36 +4,53 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Telecoop San Leonardo</title>
-    <link rel="stylesheet" href="style.css?v=6">
+    <!-- Gumagamit tayo ng ?v=7 para siguradong babasahin ang bagong CSS -->
+    <link rel="stylesheet" href="style.css?v=7">
 </head>
 <body>
 
-    <div class="portal-container">
+    <div class="portal-container" id="mainContainer">
         <img src="assets/mainlogo.png" alt="Main Logo" class="portal-logo">
         
-        <div class="payment-instructions">
+        <div class="payment-instructions" id="paymentForm">
             <p>Please transfer your payment to</p>
             <div class="gcash-number">GCash Number : 09770927222</div>
             <p class="upload-note">Once completed, kindly upload the screenshot of the receipt of your payment.</p>
             
             <input type="file" id="receiptUpload" class="upload-btn" accept="image/*">
             
+            <!-- Upload Button -->
             <button class="search-btn" id="uploadBtn" style="margin-top: 15px;" onclick="uploadReceipt()">Upload Receipt</button>
             
+            <!-- Message Status para sa Errors -->
             <div id="statusMsg" class="error-text" style="display: none; margin-top: 15px;"></div>
 
+            <!-- Back Button -->
             <button class="back-link-btn" onclick="goToHome()">Back to Search</button>
         </div>
+    </div>
 
+    <!-- The Success Modal (Nakatago by default) -->
+    <div id="successModal" class="modal">
+        <!-- Modal content -->
+        <div class="modal-content">
+            <div class="modal-icon">✅</div>
+            <h2>Matagumpay!</h2>
+            <p>Na-upload na ang iyong resibo. Maaari mo nang isara ang window na ito para bumalik sa Messenger.</p>
+            <p class="countdown-text" id="countdownMsg">Kusang magsasara sa loob ng 5 segundo...</p>
+            <button class="modal-close-btn" onclick="closeApp()">Isara Ngayon</button>
+        </div>
     </div>
 
     <script>
         const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxdc1LDeINmYD4DjT_aF9KsReDVYWHh_l48wdu7OVFnTgeQSkfaMbYSAcBC56HsNdtS4g/exec';
+        let countdownTimer;
 
         function uploadReceipt() {
             const fileInput = document.getElementById('receiptUpload');
             const uploadBtn = document.getElementById('uploadBtn');
             const statusMsg = document.getElementById('statusMsg');
+            const modal = document.getElementById('successModal');
 
             if (!fileInput.files || fileInput.files.length === 0) {
                 statusMsg.style.display = 'block';
@@ -68,15 +85,26 @@
                 .then(data => {
                     uploadBtn.innerText = 'Upload Receipt';
                     uploadBtn.disabled = false;
-                    statusMsg.style.display = 'block';
-
+                    
                     if (data.status === 'success') {
-                        statusMsg.style.color = '#28a745';
-                        statusMsg.style.backgroundColor = 'rgba(40, 167, 69, 0.1)';
-                        statusMsg.style.borderColor = '#28a745';
-                        statusMsg.innerText = 'Matagumpay na na-upload ang iyong resibo!';
-                        fileInput.value = ''; 
+                        // Ipakita ang pop-up modal
+                        modal.style.display = "block";
+                        
+                        // Magsimula ng 5 seconds countdown bago subukang isara ang window
+                        let timeLeft = 5;
+                        const countdownMsg = document.getElementById('countdownMsg');
+                        
+                        countdownTimer = setInterval(function() {
+                            timeLeft -= 1;
+                            countdownMsg.innerText = `Kusang magsasara sa loob ng ${timeLeft} segundo...`;
+                            if (timeLeft <= 0) {
+                                clearInterval(countdownTimer);
+                                closeApp();
+                            }
+                        }, 1000);
+
                     } else {
+                        statusMsg.style.display = 'block';
                         statusMsg.style.color = '#ff4c4c';
                         statusMsg.innerText = 'Error: ' + data.message;
                     }
@@ -91,6 +119,12 @@
             };
 
             reader.readAsDataURL(file);
+        }
+
+        function closeApp() {
+             // Subukang isara ang window pabalik sa messenger
+             if(countdownTimer) clearInterval(countdownTimer);
+             window.close();
         }
 
         function goToHome() {

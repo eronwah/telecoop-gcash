@@ -1,284 +1,82 @@
-/* --- UNIVERSAL BOX SIZING --- */
-* {
-    box-sizing: border-box;
-    margin: 0;
-    padding: 0;
+/* --- THE SUCCESS MODAL (POP-UP) --- */
+/* The Modal (background) */
+.modal {
+    display: none; /* Nakatago by default */
+    position: fixed; /* Mananatili sa pwesto */
+    z-index: 1000; /* Siguraduhing nasa ibabaw ng lahat */
+    left: 0;
+    top: 0;
+    width: 100%; /* Buong lapad */
+    height: 100%; /* Buong taas */
+    overflow: auto; /* Enable scroll kapag kailangan */
+    background-color: rgba(0,0,0,0.8); /* Itim na may opacity para dumilim ang likod */
+    animation: fadeIn 0.3s ease;
 }
 
-body {
-    background-color: #121212; 
-    color: #ffffff; 
-    font-family: Arial, sans-serif;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    min-height: 100vh; 
-    padding: 20px; 
-}
-
-/* --- MOBILE VIEW (Default Design) --- */
-.portal-container {
-    background-color: #ffffff; 
-    color: #000000; 
-    padding: 30px 20px; 
-    border-radius: 8px;
-    box-shadow: 0 4px 15px rgba(255, 0, 0, 0.3); 
-    width: 100%;
-    max-width: 400px;
-    border-top: 6px solid #e60000; 
+/* Modal Content/Box */
+.modal-content {
+    background-color: #ffffff;
+    margin: 30% auto; /* 30% mula sa taas at gitna */
+    padding: 30px 20px;
+    border-radius: 12px;
+    border-top: 6px solid #28a745; /* Green para sa success */
+    width: 90%; 
+    max-width: 350px;
     text-align: center;
+    box-shadow: 0 5px 25px rgba(0,0,0,0.5);
+    animation: slideDown 0.3s ease;
 }
 
-.portal-logo {
-    width: 100%;
-    max-width: 150px; 
-    height: auto;
-    display: block; 
-    margin: 0 auto 20px auto; 
-}
-
-.input-group {
-    text-align: left;
-    margin-bottom: 20px;
-    width: 100%;
-}
-
-.input-group label {
-    display: block;
-    font-weight: bold;
-    margin-bottom: 8px;
-    font-size: 14px;
-    text-align: center; 
-}
-
-.input-group input {
-    width: 100%;
-    padding: 12px;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    font-size: 16px; 
-    text-align: center; 
-    letter-spacing: 2px; 
-}
-
-.input-group input::placeholder {
-    color: #888;
-    font-style: italic;
-    font-size: 12px; 
-    text-align: center; 
-    letter-spacing: normal;
-}
-
-.input-group input:focus {
-    outline: none;
-    border-color: #e60000; 
-    box-shadow: 0 0 5px rgba(230, 0, 0, 0.5); 
-}
-
-.search-btn {
-    background-color: #e60000; 
-    color: #ffffff; 
-    border: none;
-    padding: 14px;
-    width: 100%;
-    border-radius: 4px;
-    font-size: 16px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-}
-
-.search-btn:hover {
-    background-color: #cc0000; 
-}
-
-.search-btn:disabled {
-    background-color: #999999;
-    cursor: not-allowed;
-}
-
-/* --- RESULTS & ACCOUNT DETAILS --- */
-.result-container {
-    margin-top: 20px;
-}
-
-.error-text {
-    color: #ff4c4c;
-    background-color: rgba(255, 76, 76, 0.1);
-    padding: 10px;
-    border-radius: 4px;
-    border: 1px solid #ff4c4c;
-    text-align: center;
-    font-size: 14px;
-}
-
-.account-details {
-    background-color: #ffffff; 
-    padding: 20px;
-    border-radius: 8px;
-    border: 1px solid #e0e0e0;
-    border-top: 4px solid #e60000; 
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); 
-    color: #333;
-}
-
-.account-details h3 {
-    margin-top: 0;
-    margin-bottom: 20px;
-    color: #000;
-    font-size: 18px;
-    text-align: center;
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-.detail-row {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    padding: 10px 0;
-    border-bottom: 1px solid #f0f0f0;
-}
-
-.detail-row:last-of-type {
-    border-bottom: none;
-}
-
-.detail-label {
-    font-size: 14px;
-    color: #666;
-}
-
-.detail-value {
-    font-size: 14px;
-    font-weight: bold;
-    color: #121212;
-    text-align: right;
-}
-
-/* --- PAYMENT SECTION --- */
-.payment-section {
-    margin-top: 25px;
-    padding-top: 20px;
-    border-top: 2px dashed #ccc;
-    text-align: center;
-}
-
-.payment-question {
-    font-weight: bold;
-    color: #e60000;
+.modal-icon {
+    font-size: 50px;
     margin-bottom: 15px;
+}
+
+.modal-content h2 {
+    color: #28a745;
+    margin-bottom: 10px;
+    font-size: 24px;
+}
+
+.modal-content p {
+    color: #333;
     font-size: 15px;
+    line-height: 1.5;
+    margin-bottom: 15px;
 }
 
-.button-group {
-    display: flex;
-    flex-direction: row; 
-    gap: 10px; 
+.countdown-text {
+    font-size: 12px !important;
+    font-style: italic;
+    color: #888 !important;
+    margin-bottom: 25px !important;
 }
 
-.yes-btn, .no-btn {
-    flex: 1;
+/* Modal Close Button */
+.modal-close-btn {
+    background-color: #121212; 
+    color: #ffffff; 
     border: none;
     padding: 12px;
-    border-radius: 4px;
-    font-size: 14px;
+    width: 100%;
+    border-radius: 6px;
+    font-size: 15px;
     font-weight: bold;
     cursor: pointer;
     transition: background-color 0.3s ease;
 }
 
-.yes-btn {
-    background-color: #e60000; 
-    color: #ffffff;
-}
-
-.yes-btn:hover {
-    background-color: #cc0000;
-}
-
-.no-btn {
-    background-color: #121212; 
-    color: #ffffff;
-}
-
-.no-btn:hover {
+.modal-close-btn:hover {
     background-color: #333333;
 }
 
-.payment-instructions {
-    text-align: center;
-    color: #333;
+/* Animations */
+@keyframes fadeIn {
+    from {opacity: 0;}
+    to {opacity: 1;}
 }
 
-.payment-instructions p {
-    font-size: 15px;
-    margin-bottom: 10px;
-}
-
-.gcash-number {
-    font-size: 20px;
-    font-weight: bold;
-    color: #e60000;
-    margin: 15px 0;
-    background-color: #f9f9f9;
-    padding: 15px;
-    border-radius: 8px;
-    border: 1px solid #ddd;
-}
-
-.upload-note {
-    font-style: italic;
-    color: #555;
-    margin-bottom: 20px;
-}
-
-.upload-btn {
-    width: 100%;
-    padding: 10px;
-    background-color: #f9f9f9;
-    border: 1px solid #ccc;
-    border-radius: 4px;
-    cursor: pointer;
-}
-
-.back-link-btn {
-    background-color: #ffffff; 
-    color: #121212;
-    border: 1px solid #cccccc;
-    padding: 12px;
-    width: 100%;
-    margin-top: 15px;
-    border-radius: 4px;
-    font-size: 14px;
-    font-weight: bold;
-    cursor: pointer;
-    transition: all 0.3s ease;
-}
-
-.back-link-btn:hover {
-    background-color: #f0f0f0; 
-    border-color: #999999;
-}
-
-/* --- WEBVIEW / DESKTOP OPTIMIZATION --- */
-@media (min-width: 768px) {
-    .portal-container {
-        padding: 40px; 
-        max-width: 450px; 
-        border-radius: 12px;
-        box-shadow: 0 8px 25px rgba(255, 0, 0, 0.4); 
-    }
-
-    .portal-logo {
-        max-width: 170px; 
-    }
-
-    .input-group label {
-        font-size: 15px;
-    }
-
-    .input-group input {
-        font-size: 18px;
-    }
+@keyframes slideDown {
+    from {transform: translateY(-50px); opacity: 0;}
+    to {transform: translateY(0); opacity: 1;}
 }
