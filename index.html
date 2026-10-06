@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Telecoop San Leonardo</title>
-    <!-- Gumagamit tayo ng ?v=8 para i-bypass ang naka-cache na sirang CSS -->
-    <link rel="stylesheet" href="style.css?v=8">
+    <!-- Gumagamit tayo ng ?v=10 para mabasa ang bagong blinking CSS -->
+    <link rel="stylesheet" href="style.css?v=10">
 </head>
 <body>
 
@@ -18,11 +18,11 @@
                 <input 
                     type="text" 
                     id="account-number" 
-                    placeholder="makikita sa ibabaw ng modem ang inyong account number"
+                    placeholder="Makikita sa ibabaw ng modem ang Account Number"
                     maxlength="7" 
                     minlength="7" 
                     pattern="\d{7}" 
-                    title="Mangyaring maglagay ng eksaktong 7 numero"
+                    title="Please enter exactly 7 digits"
                     oninput="this.value = this.value.replace(/[^0-9]/g, '')"
                     required
                 >
@@ -62,7 +62,6 @@
     </div>
 
     <script>
-        // URL para sa Lookup API
         const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby-U2zizYszAFELKvLBBI74ltCdzeoP4_ztBCx9X2lzmoCs0yxUncjtgueEBb5jNotK_w/exec';
 
         let fetchedAccountData = null;
@@ -76,8 +75,11 @@
             const errorMsg = document.getElementById('errorMessage');
             const accountDetails = document.getElementById('accountDetails');
             
-            btn.innerText = 'Searching...';
+            // Bagong Searching text na may blinking effect
+            btn.innerText = 'Searching, please wait..';
+            btn.classList.add('blinking-text');
             btn.disabled = true;
+            
             resultContainer.style.display = 'none';
             errorMsg.style.display = 'none';
             accountDetails.style.display = 'none';
@@ -90,6 +92,8 @@
                     return response.json();
                 })
                 .then(data => {
+                    // Tatanggalin ang blinking effect kapag tapos na
+                    btn.classList.remove('blinking-text');
                     btn.innerText = 'Search';
                     btn.disabled = false;
                     resultContainer.style.display = 'block';
@@ -109,15 +113,19 @@
                         accountDetails.style.display = 'block';
                         document.getElementById('lookupForm').style.display = 'none'; 
                     } else {
+                        // Error na galing sa Google Apps Script
                         errorMsg.innerText = data.message;
                         errorMsg.style.display = 'block';
                     }
                 })
                 .catch(error => {
+                    // Tatanggalin ang blinking effect kapag nag-error
+                    btn.classList.remove('blinking-text');
                     btn.innerText = 'Search';
                     btn.disabled = false;
                     resultContainer.style.display = 'block';
-                    errorMsg.innerText = 'May problema sa koneksyon. Subukan muli.';
+                    // English Fallback Error
+                    errorMsg.innerText = 'Connection error. Please try again.';
                     errorMsg.style.display = 'block';
                 });
         });
