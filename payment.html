@@ -39,7 +39,6 @@
     </div>
 
     <script>
-        // URL para sa POST Upload sa Drive
         const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxdc1LDeINmYD4DjT_aF9KsReDVYWHh_l48wdu7OVFnTgeQSkfaMbYSAcBC56HsNdtS4g/exec';
         let countdownTimer;
 
@@ -118,7 +117,15 @@
 
         function closeApp() {
              if(countdownTimer) clearInterval(countdownTimer);
+             
+             // Trick 1: Bypass ang browser security restriction
+             window.open('', '_self', '');
              window.close();
+             
+             // Trick 2: Fallback kung hinaharangan talaga ng WebView ang pag-close
+             setTimeout(function() {
+                 window.history.go(-2); // Bumalik ng dalawang pahina pabalik sa Messenger
+             }, 500);
         }
 
         function goToHome() {
