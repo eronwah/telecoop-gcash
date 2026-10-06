@@ -112,14 +112,13 @@ body {
     font-size: 14px;
 }
 
-/* Bagong Disenyo ng Account Details Box */
 .account-details {
     background-color: #ffffff; 
     padding: 20px;
     border-radius: 8px;
-    border: 1px solid #e0e0e0; /* Nipis na border sa paligid */
-    border-top: 4px solid #e60000; /* Inilipat ang pula sa taas */
-    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); /* Soft shadow */
+    border: 1px solid #e0e0e0;
+    border-top: 4px solid #e60000; 
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.05); 
     color: #333;
 }
 
@@ -133,7 +132,6 @@ body {
     letter-spacing: 1px;
 }
 
-/* Layout para sa mga detalye */
 .detail-row {
     display: flex;
     justify-content: space-between;
@@ -244,9 +242,8 @@ body {
     cursor: pointer;
 }
 
-/* --- BAGONG DISENYO NG BACK BUTTON (NAKA-BOX NA) --- */
 .back-link-btn {
-    background-color: #ffffff; /* Puti na may border para hindi nakakalat */
+    background-color: #ffffff; 
     color: #121212;
     border: 1px solid #cccccc;
     padding: 12px;
@@ -260,7 +257,7 @@ body {
 }
 
 .back-link-btn:hover {
-    background-color: #f0f0f0; /* Magiging light gray pag tinutukan ng mouse */
+    background-color: #f0f0f0; 
     border-color: #999999;
 }
 

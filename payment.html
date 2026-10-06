@@ -3,9 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Payment Portal</title>
-    <!-- Gumagamit tayo ng ?v=4 para siguradong babasahin ang bagong CSS -->
-    <link rel="stylesheet" href="style.css?v=4">
+    <title>Telecoop San Leonardo</title>
+    <!-- Gumagamit tayo ng ?v=5 para siguradong babasahin ang bagong CSS -->
+    <link rel="stylesheet" href="style.css?v=5">
 </head>
 <body>
 
@@ -19,13 +19,84 @@
             
             <input type="file" id="receiptUpload" class="upload-btn" accept="image/*">
             
-            <!-- Inayos ang Back Button para maging kahon -->
+            <!-- Upload Button -->
+            <button class="search-btn" id="uploadBtn" style="margin-top: 15px;" onclick="uploadReceipt()">Upload Receipt</button>
+            
+            <!-- Message Status -->
+            <div id="statusMsg" class="error-text" style="display: none; margin-top: 15px;"></div>
+
+            <!-- Back Button -->
             <button class="back-link-btn" onclick="goToHome()">Back to Search</button>
         </div>
 
     </div>
 
     <script>
+        const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxdc1LDeINmYD4DjT_aF9KsReDVYWHh_l48wdu7OVFnTgeQSkfaMbYSAcBC56HsNdtS4g/exec';
+
+        function uploadReceipt() {
+            const fileInput = document.getElementById('receiptUpload');
+            const uploadBtn = document.getElementById('uploadBtn');
+            const statusMsg = document.getElementById('statusMsg');
+
+            if (!fileInput.files || fileInput.files.length === 0) {
+                statusMsg.style.display = 'block';
+                statusMsg.style.color = '#ff4c4c';
+                statusMsg.innerText = 'Pumili muna ng larawan ng resibo.';
+                return;
+            }
+
+            const file = fileInput.files[0];
+            const reader = new FileReader();
+
+            uploadBtn.innerText = 'Uploading...';
+            uploadBtn.disabled = true;
+            statusMsg.style.display = 'none';
+
+            reader.onload = function(e) {
+                const base64Data = e.target.result.split(',')[1];
+                const accountData = JSON.parse(localStorage.getItem('telecoop_accountData') || '{}');
+
+                const payload = {
+                    base64: base64Data,
+                    mimeType: file.type,
+                    accountNumber: accountData.accountNumber || 'Unknown',
+                    accountName: accountData.accountName || 'Unknown'
+                };
+
+                fetch(APPS_SCRIPT_URL, {
+                    method: 'POST',
+                    body: JSON.stringify(payload)
+                })
+                .then(res => res.json())
+                .then(data => {
+                    uploadBtn.innerText = 'Upload Receipt';
+                    uploadBtn.disabled = false;
+                    statusMsg.style.display = 'block';
+
+                    if (data.status === 'success') {
+                        statusMsg.style.color = '#28a745';
+                        statusMsg.style.backgroundColor = 'rgba(40, 167, 69, 0.1)';
+                        statusMsg.style.borderColor = '#28a745';
+                        statusMsg.innerText = 'Matagumpay na na-upload ang iyong resibo!';
+                        fileInput.value = '';
+                    } else {
+                        statusMsg.style.color = '#ff4c4c';
+                        statusMsg.innerText = 'Error: ' + data.message;
+                    }
+                })
+                .catch(err => {
+                    uploadBtn.innerText = 'Upload Receipt';
+                    uploadBtn.disabled = false;
+                    statusMsg.style.display = 'block';
+                    statusMsg.style.color = '#ff4c4c';
+                    statusMsg.innerText = 'Nagkaroon ng problema sa pag-upload. Subukan muli.';
+                });
+            };
+
+            reader.readAsDataURL(file);
+        }
+
         function goToHome() {
             window.location.href = 'index.html';
         }
