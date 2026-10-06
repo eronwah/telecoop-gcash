@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Telecoop San Leonardo</title>
-    <!-- Gumagamit tayo ng ?v=6 para siguradong hindi naka-cache ang lumang CSS -->
-    <link rel="stylesheet" href="style.css?v=6">
+    <!-- Gumagamit tayo ng ?v=8 para i-bypass ang naka-cache na sirang CSS -->
+    <link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
 
@@ -62,10 +62,9 @@
     </div>
 
     <script>
-        // Web App URL mula sa iyong nakaraang setup
+        // URL para sa Lookup API
         const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycby-U2zizYszAFELKvLBBI74ltCdzeoP4_ztBCx9X2lzmoCs0yxUncjtgueEBb5jNotK_w/exec';
 
-        // Global variable para ipasa sa payment.html
         let fetchedAccountData = null;
 
         document.getElementById('lookupForm').addEventListener('submit', function(e) {

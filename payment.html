@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Telecoop San Leonardo</title>
-    <!-- Gumagamit tayo ng ?v=7 para siguradong babasahin ang bagong CSS -->
-    <link rel="stylesheet" href="style.css?v=7">
+    <!-- Gumagamit tayo ng ?v=8 para i-bypass ang naka-cache na sirang CSS -->
+    <link rel="stylesheet" href="style.css?v=8">
 </head>
 <body>
 
@@ -19,20 +19,16 @@
             
             <input type="file" id="receiptUpload" class="upload-btn" accept="image/*">
             
-            <!-- Upload Button -->
             <button class="search-btn" id="uploadBtn" style="margin-top: 15px;" onclick="uploadReceipt()">Upload Receipt</button>
             
-            <!-- Message Status para sa Errors -->
             <div id="statusMsg" class="error-text" style="display: none; margin-top: 15px;"></div>
 
-            <!-- Back Button -->
             <button class="back-link-btn" onclick="goToHome()">Back to Search</button>
         </div>
     </div>
 
-    <!-- The Success Modal (Nakatago by default) -->
+    <!-- The Success Modal -->
     <div id="successModal" class="modal">
-        <!-- Modal content -->
         <div class="modal-content">
             <div class="modal-icon">✅</div>
             <h2>Matagumpay!</h2>
@@ -43,6 +39,7 @@
     </div>
 
     <script>
+        // URL para sa POST Upload sa Drive
         const APPS_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxdc1LDeINmYD4DjT_aF9KsReDVYWHh_l48wdu7OVFnTgeQSkfaMbYSAcBC56HsNdtS4g/exec';
         let countdownTimer;
 
@@ -87,10 +84,8 @@
                     uploadBtn.disabled = false;
                     
                     if (data.status === 'success') {
-                        // Ipakita ang pop-up modal
                         modal.style.display = "block";
                         
-                        // Magsimula ng 5 seconds countdown bago subukang isara ang window
                         let timeLeft = 5;
                         const countdownMsg = document.getElementById('countdownMsg');
                         
@@ -122,7 +117,6 @@
         }
 
         function closeApp() {
-             // Subukang isara ang window pabalik sa messenger
              if(countdownTimer) clearInterval(countdownTimer);
              window.close();
         }
